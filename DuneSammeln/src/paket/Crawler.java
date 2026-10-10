@@ -11,8 +11,8 @@ public class Crawler {
 	
 	public Crawler() {
 		size = 50;
-		x=50;
-		y=500;
+		x=150;
+		y=150;
 		stift = new Stift();
 	}
 	
@@ -40,49 +40,57 @@ public class Crawler {
 		stift.bewegeBis(sx, sy);
 	}
 	
+	
+	
 	public void bewege(String s) {
 		Hilfe.warte(1);
 		int a =0;
+		
+		if (y>90 && 510 >= y) {
 	    if ("Oben".equals(s)) {
 	    	radieren();
-	    	for(int i =1;i<4;i++) {
+	    	for(int i =1;i<3;i++) {
 	        	a = i;
 	        }
 	        y = y - a;
 	        }
 	        malen();
-	    
+		}
 
+		
+		if (x>=130 && 690 >= x) {
 	    if ("Rechts".equals(s)) {
 	        radieren();
-	        for(int i =1;i<4;i++) {
+	        for(int i =1;i<3;i++) {
 	        	a =i;
 	        }
 	        x = x + a;
 	        }
 	        malen();
-	    
-
+		}
+	        if (y>= 50 && 450 >= y) {
 	    if ("Unten".equals(s)) {
 	        radieren();
-	        for(int i =1;i<4;i++) {
+	        for(int i =1;i<3;i++) {
 	        	a =i;
 	        }
 	        y = y + a;
 	        }
 	        malen();
-	    
+	        }
 
+	        if (x>=130 && 710 >= x) {
 	    if ("Links".equals(s)) {
 	    	
 	        radieren();
-	        for(int i =1;i<4;i++) {
+	        for(int i =1;i<3;i++) {
 	        	a =i;
 	        }
 	        x = x - a;
 	        }
 	        malen();
 	    }
+	}
 	    
 	
 

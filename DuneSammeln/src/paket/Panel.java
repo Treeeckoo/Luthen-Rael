@@ -15,7 +15,7 @@ public class Panel {
 	
 	public Panel() {
 		
-		fenster = new Fenster("DuneSpiel", 1240, 860);
+		fenster = new Fenster("DuneSpiel",800, 560);
 		ende = new Knopf("Ende",20,20,80,40);
 		tastatur = new Tastatur();
 		crawler = new Crawler();
@@ -34,11 +34,11 @@ public class Panel {
 	public void SpielfeldMalen() {
 		for(int i =0;i<5;i++) {
 			wurm[i] = new Wurm();
-			wurm[i].setPos(Hilfe.zufall(200, 800), Hilfe.zufall(200, 800));
+			wurm[i].setPos(Hilfe.zufall(185, 700), Hilfe.zufall(105, 495));
 			wurm[i].malen();
 			
 			spice[i] = new Spice();
-			spice[i].setPos(Hilfe.zufall(200, 800), Hilfe.zufall(200, 800));
+			spice[i].setPos(Hilfe.zufall(185, 700), Hilfe.zufall(105, 495));
 			spice[i].malen();
 			
 			
@@ -99,6 +99,8 @@ public class Panel {
 			wurm[i].checkClick(crawler.getX(), crawler.getY()+50);		// unten links
 			
 			wurm[i].checkClick(crawler.getX()+50, crawler.getY()+50);	// unten rechts
+			
+			
 			
 			spice[i].checkClick(crawler.getX(), crawler.getY());			 // oben links
 			
