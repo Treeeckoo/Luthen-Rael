@@ -1,8 +1,10 @@
 package paket;
 
 import objekte.*;
+import Sprites.MainBild;
 import basis.*;
 public class Panel {
+	private MainBild ss;
 	private Wurm[] wurm;	
 	private Spice[] spice;
 	private Crawler crawler;
@@ -16,6 +18,7 @@ public class Panel {
 	public Panel() {
 		
 		fenster = new Fenster("DuneSpiel",800, 560);
+		ss = new MainBild();
 		ende = new Knopf("Ende",20,20,80,40);
 		tastatur = new Tastatur();
 		crawler = new Crawler();
