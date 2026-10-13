@@ -25,6 +25,8 @@ public class Panel {
 		wurm = new Wurm[5];
 		spice = new Spice[5];
 		maus = new Maus();
+		ss.setPostition(300, 300);
+
 		
 		starten();
 	}
@@ -48,12 +50,14 @@ public class Panel {
 			crawler.malen();
 			
 		}
+		ss.setZ();
 	}
 	
 	
 	public void loop() {
 		while(!ende.wurdeGedrueckt()) {
 			Hilfe.warte(1);
+			ss.setZ();
 			if(maus.istGedrueckt()) {
 				for(int i=0;i<5;i++) {
 					Clicke(i);
