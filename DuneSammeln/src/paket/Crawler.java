@@ -2,27 +2,32 @@ package paket;
 
 import java.awt.Color;
 
+import Sprites.RoverBild;
 import basis.*;
 
 public class Crawler {
 	private int x,y,size;
 	private Color color;
 	private Stift stift;
+	private RoverBild rover;
 	
 	public Crawler() {
-		size = 50;
-		x=150;
-		y=150;
+		size = 64;
+		x=155;
+		y=100;
 		stift = new Stift();
+		rover = new RoverBild();
+
+		rover.ladeMap();
 	}
 	
 	public void malen() {
 		color = color.red;
 		stift.bewegeBis(x, y);
-		stift.setzeFarbe(color);
-		stift.zeichneRechteck(size,size);
 		stift.bewegeBis(x+1, y+1);
-		stift.fuelle(color, color);
+		
+		rover.setLayer(1);
+		rover.setPos(x, y);
 	}
 	
 	public void radieren() {
@@ -46,8 +51,10 @@ public class Crawler {
 		Hilfe.warte(1);
 		int a =0;
 		
-		if (y>90 && 510 >= y) {
+		if (y>85 && 510 >= y) {
 	    if ("Oben".equals(s)) {
+	    	rover.oben();
+	    	Hilfe.warte(10);
 	    	radieren();
 	    	for(int i =1;i<3;i++) {
 	        	a = i;
@@ -58,8 +65,10 @@ public class Crawler {
 		}
 
 		
-		if (x>=130 && 690 >= x) {
+		if (x>=145 && 695 >= x) {
 	    if ("Rechts".equals(s)) {
+	    	rover.rechts();
+	    	Hilfe.warte(10);
 	        radieren();
 	        for(int i =1;i<3;i++) {
 	        	a =i;
@@ -70,6 +79,8 @@ public class Crawler {
 		}
 	        if (y>= 50 && 450 >= y) {
 	    if ("Unten".equals(s)) {
+	    	rover.unten();
+	    	Hilfe.warte(10);
 	        radieren();
 	        for(int i =1;i<3;i++) {
 	        	a =i;
@@ -79,9 +90,10 @@ public class Crawler {
 	        malen();
 	        }
 
-	        if (x>=130 && 710 >= x) {
+	        if (x>=160 && 700 >= x) {
 	    if ("Links".equals(s)) {
-	    	
+	    	rover.links();
+	    	Hilfe.warte(10);
 	        radieren();
 	        for(int i =1;i<3;i++) {
 	        	a =i;

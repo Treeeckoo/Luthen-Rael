@@ -13,7 +13,7 @@ public abstract class object {
 	
 	
 		public object() {
-			size = 50;
+			size = 64;
 			x=50;
 			y=50;
 			stift = new Stift();

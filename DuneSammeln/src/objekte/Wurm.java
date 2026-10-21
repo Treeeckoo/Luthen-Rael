@@ -1,26 +1,22 @@
 package objekte;
 
+import Sprites.WurmBild;
+
 public class Wurm extends object {
+	private WurmBild wurm;
 	
 	public Wurm() {
 		super();
+		wurm = new WurmBild();
 	}
 	
 	public void malen() {
-		color = color.black;
-		stift.zeichneKreis(size/2);
-		stift.bewegeBis(x+1, y+1);
-		stift.fuelle(color, color);
+		wurm.setLayer(1);
+		wurm.setPos(x-31, y-31);
 	}
 	
 	public void radieren() {
-		color = color.white;
-		stift.setzeFarbe(color);
-		stift.bewegeBis(x, y);
-		stift.zeichneKreis(size/2);
-		
-		stift.fuelle(color, color);
-		wurderadiert();
+		wurm.setSichtbar(false);
 	}
 	
 	
@@ -34,6 +30,7 @@ public class Wurm extends object {
 
 	    if (dx * dx + dy * dy <= radius * radius) {
 	        radieren();
+	        System.out.println("wurm");
 	    }
 	}
 	

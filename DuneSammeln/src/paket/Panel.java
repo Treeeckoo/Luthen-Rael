@@ -2,9 +2,9 @@ package paket;
 
 import objekte.*;
 import Sprites.MainBild;
+import Sprites.RoverBild;
 import basis.*;
 public class Panel {
-	private MainBild ss;
 	private Wurm[] wurm;	
 	private Spice[] spice;
 	private Crawler crawler;
@@ -12,21 +12,19 @@ public class Panel {
 	private Knopf ende;
 	private Maus maus;
 	private Tastatur tastatur;
+	private RoverBild rover;
 	
 	
 	
 	public Panel() {
 		
 		fenster = new Fenster("DuneSpiel",800, 560);
-		ss = new MainBild();
 		ende = new Knopf("Ende",20,20,80,40);
 		tastatur = new Tastatur();
 		crawler = new Crawler();
 		wurm = new Wurm[5];
 		spice = new Spice[5];
 		maus = new Maus();
-		ss.setPostition(300, 300);
-
 		
 		starten();
 	}
@@ -50,14 +48,12 @@ public class Panel {
 			crawler.malen();
 			
 		}
-		ss.setZ();
 	}
 	
 	
 	public void loop() {
 		while(!ende.wurdeGedrueckt()) {
 			Hilfe.warte(1);
-			ss.setZ();
 			if(maus.istGedrueckt()) {
 				for(int i=0;i<5;i++) {
 					Clicke(i);
@@ -101,11 +97,11 @@ public class Panel {
 	public void Clicke(int i) {
 			wurm[i].checkClick(crawler.getX(), crawler.getY());			 // oben links
 			
-			wurm[i].checkClick(crawler.getX()+50, crawler.getY());	// oben rechts
+			wurm[i].checkClick(crawler.getX()+64, crawler.getY());	// oben rechts
 			
-			wurm[i].checkClick(crawler.getX(), crawler.getY()+50);		// unten links
+			wurm[i].checkClick(crawler.getX(), crawler.getY()+64);		// unten links
 			
-			wurm[i].checkClick(crawler.getX()+50, crawler.getY()+50);	// unten rechts
+			wurm[i].checkClick(crawler.getX()+64, crawler.getY()+64);	// unten rechts
 			
 			
 			
