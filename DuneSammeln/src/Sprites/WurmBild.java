@@ -25,7 +25,7 @@ private Bild worm;
 		// TODO Auto-generated method stub
 		
 	}
-	
+
 	
 	@Override
 	public void setSichtbar(boolean b) {

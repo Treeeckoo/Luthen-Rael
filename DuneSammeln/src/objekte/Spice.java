@@ -1,33 +1,30 @@
 package objekte;
 
-public class Spice extends object {
+import Sprites.SpiceBild;
 
+public class Spice extends object {
+	private SpiceBild spice;
 	
 	public Spice() {
 		super();
+		spice = new SpiceBild();
 	}
 	
 	public void malen() {
-		color = color.black;
-		stift.zeichneRechteck(size,size);
-		stift.bewegeBis(x+1, y+1);
-		stift.fuelle(color, color);
+		spice.setLayer(1);
+		spice.setPos(x, y);
 	}
 	
 	public void radieren() {
-		color = color.white;
-		stift.setzeFarbe(color);
-		stift.bewegeBis(x, y);
-		stift.zeichneRechteck(size,size);
-		stift.bewegeBis(x+2, y+2);
-		stift.fuelle(color, color);
-		wurderadiert();
+		spice.setSichtbar(false);
 	}
 
 	@Override
 	public void checkClick(int mx, int my) {
 		if(mx > x && my > y && mx < x + size && my < y + size) {
 			radieren();
+
+	        System.out.println("spice");
 		}
 		
 	}

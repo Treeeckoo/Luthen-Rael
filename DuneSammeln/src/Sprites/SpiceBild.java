@@ -6,16 +6,16 @@ public class SpiceBild extends MainBild {
 private Bild spice;
 	
 	public SpiceBild() {
-		
+		spice = new Bild("/Sprittes/spice.png");
 	}
 	@Override
 	public void setPos(int nx, int ny) {
-		
+		spice.setzePosition(nx, ny);
 	}
 
 	@Override
 	public void setLayer(int layer) {
-		
+		spice.setzeZOrdnung(layer);
 	}
 
 	@Override
@@ -25,7 +25,7 @@ private Bild spice;
 	}
 	@Override
 	public void setSichtbar(boolean b) {
-		// TODO Auto-generated method stub
+		spice.setzeSichtbar(b);
 		
 	}
 
