@@ -4,6 +4,7 @@ import Sprites.WurmBild;
 
 public class Wurm extends object {
 	private WurmBild wurm;
+
 	
 	public Wurm() {
 		super();
@@ -20,6 +21,8 @@ public class Wurm extends object {
 	}
 	
 	
+	
+	
 
 	@Override
 	public void checkClick(int mx, int my) {
@@ -34,6 +37,7 @@ public class Wurm extends object {
 	    }
 	}
 	
+
 	
 
 }

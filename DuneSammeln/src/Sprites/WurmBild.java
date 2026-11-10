@@ -32,6 +32,10 @@ private Bild worm;
 		worm.setzeSichtbar(b);
 		
 	}
+	
+	public void setSize(int a, int b) {
+		worm.setzeGroesse(a, b);
+	}
 
 }
 
