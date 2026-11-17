@@ -10,6 +10,8 @@ public abstract class object {
 	protected Color color;
 	protected Stift stift;
 	protected boolean tru;
+	protected boolean angecklickt;
+	protected boolean fertig;
 	
 	
 		public object() {
@@ -18,6 +20,8 @@ public abstract class object {
 			y=50;
 			stift = new Stift();
 			tru = true;
+			angecklickt = false;
+			fertig = false;
 			
 		}
 			public abstract void checkClick(int mx, int my);
@@ -68,6 +72,17 @@ public abstract class object {
 			return tru;
 			
 		}
+		public boolean getAngeklickt() {
+	    	return angecklickt;
+	    }
+		public boolean getfertig() {
+			return fertig;
+		}
+		public void setfertig(boolean a) {
+			fertig = a;
+		}
+		
+	
 
 
 

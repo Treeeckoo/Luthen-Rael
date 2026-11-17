@@ -16,6 +16,7 @@ public class Panel {
 	private Tastatur tastatur;
 	private RoverBild rover;
 	private RiesenWurm riesenwurm;
+	private UI ui;
 
 	public Panel() {
 
@@ -27,6 +28,8 @@ public class Panel {
 
 		wurm = new Wurm[4];
 		spice = new Spice[10];
+
+		ui = new UI(riesenwurm);
 
 		maus = new Maus();
 
@@ -84,8 +87,8 @@ public class Panel {
 				c = spice[i].getX();
 				d = spice[i].getY();
 
-				if (a - c >= -32 && a - c <= 32 && 
-					b - d >= -32 && b - d <= 32) {
+				if (a - c >= -60 && a - c <= 60 && 
+					b - d >= -60 && b - d <= 60) {
 
 					spice[i].setPos(Hilfe.zufall(170, 700), Hilfe.zufall(85, 490));
 
@@ -116,13 +119,16 @@ public class Panel {
 		crawler.malen();
 	}
 
+	private boolean was_pressed = false;
 	public void loop() {
 
 		while (!ende.wurdeGedrueckt()) {
 
 			Hilfe.warte(1);
-
-			if (maus.istGedrueckt()) {
+			
+			boolean pressed = maus.istGedrueckt();
+			
+			if (pressed && !was_pressed) {
 
 				for (int i = 0; i < 10; i++) {
 					ClickeSpice(i);
@@ -130,9 +136,19 @@ public class Panel {
 
 				for (int i = 0; i < 4; i++) {
 					ClickeWurm(i);
+					if (wurm[i].getAngeklickt()==true && wurm[i].getfertig()!= true) {
+						
+						wurm[i].setfertig(true);
+						 System.out.println("wurm");
+						 riesenwurm.setMeter(riesenwurm.getMeter()+12500);
+						
+					}
+					
 					
 				}
 			}
+			
+			was_pressed = pressed;
 
 			if (tastatur.wurdeGedrueckt()) {
 
@@ -155,8 +171,11 @@ public class Panel {
 				}
 			}
 			
-			if (riesenwurm.getMeter()<=99999) {
+			if (riesenwurm.getMeter()<=200000) {
+				
 				riesenwurm.setMeter(riesenwurm.getMeter()+1);
+
+				ui.showMeter();
 			}else {
 				riesenwurm.ende((crawler.getX()-64), (crawler.getY()-64));
 			}
@@ -188,7 +207,7 @@ public class Panel {
 		wurm[i].checkClick(crawler.getX() + 57, crawler.getY() + 48);
 	}
 
-	public void Zufall() {
-
-	}
+	
+	
+	
 }

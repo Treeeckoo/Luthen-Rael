@@ -12,13 +12,12 @@ public class RiesenWurm extends object {
     
     }
     public void WurmMeter() {
-		meter = 0;
+		meter = 10;
 		
 	}
 
 	@Override
 	public void checkClick(int mx, int my) {
-		// TODO Auto-generated method stub
 		
 	}
 	public void ende(int x, int y) {

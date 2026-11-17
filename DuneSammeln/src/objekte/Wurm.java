@@ -4,11 +4,13 @@ import Sprites.WurmBild;
 
 public class Wurm extends object {
 	private WurmBild wurm;
+	
 
 	
 	public Wurm() {
 		super();
 		wurm = new WurmBild();
+		angecklickt = false;
 	}
 	
 	public void malen() {
@@ -33,9 +35,14 @@ public class Wurm extends object {
 
 	    if (dx * dx + dy * dy <= radius * radius) {
 	        radieren();
-	        System.out.println("wurm");
+	       
+	        angecklickt = true;
 	    }
+	    
+	    
 	}
+	
+	
 	
 
 	
