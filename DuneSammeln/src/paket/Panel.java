@@ -1,3 +1,4 @@
+
 package paket;
 
 import objekte.*;
@@ -9,6 +10,7 @@ public class Panel {
 
 	private Wurm[] wurm;
 	private Spice[] spice;
+	private object[] gegenstaende;
 	private Crawler crawler;
 	private Fenster fenster;
 	private Knopf ende;
@@ -23,11 +25,8 @@ public class Panel {
 		fenster = new Fenster("DuneSpiel", 800, 560);
 		ende = new Knopf("Ende", 20, 20, 80, 40);
 		tastatur = new Tastatur();
-		crawler = new Crawler();
-		riesenwurm = new RiesenWurm();
 
-		wurm = new Wurm[4];
-		spice = new Spice[10];
+		riesenwurm = new RiesenWurm();
 
 		ui = new UI(riesenwurm);
 
@@ -37,97 +36,116 @@ public class Panel {
 	}
 
 	public void starten() {
+		Schwierigkeit();
 		SpielfeldMalen();
 		loop();
 	}
 
-	public void SpielfeldMalen() {
-
-		int a, b, c, d;
-
-		// WÜRMER
-		for (int i = 0; i < 4; i++) {
-
-			wurm[i] = new Wurm();
-
-			wurm[i].setPos(Hilfe.zufall(234, 631), Hilfe.zufall(149, 386));
-
-			for (int j = 0; j < i; j++) {
-
-				a = wurm[j].getX();
-				b = wurm[j].getY();
-
-				c = wurm[i].getX();
-				d = wurm[i].getY();
-
-				if (a - c >= -128 && a - c <= 128 &&			
-				    b - d >= -128 && b - d <= 128) {
-
-					wurm[i].setPos(Hilfe.zufall(234, 631), Hilfe.zufall(149, 386));
-
-					j = -1;
-				}
-			}
-
-			wurm[i].malen();
+	public void Schwierigkeit() {
+		while(ui.getDifSelect()!= true){
+			ui.Difficulty();
+			Hilfe.warte(1);
 		}
-
-		for (int i = 0; i < 10; i++) {
-
-			spice[i] = new Spice();
-
-			spice[i].setPos(Hilfe.zufall(170, 700), Hilfe.zufall(85, 490));
-
-			
-			for (int j = 0; j < i; j++) {
-
-				a = spice[j].getX();
-				b = spice[j].getY();
-
-				c = spice[i].getX();
-				d = spice[i].getY();
-
-				if (a - c >= -60 && a - c <= 60 && 
-					b - d >= -60 && b - d <= 60) {
-
-					spice[i].setPos(Hilfe.zufall(170, 700), Hilfe.zufall(85, 490));
-
-					j = -1;
-				}
-			}
-
-			for (int j = 0; j < 4; j++) {
-
-				a = wurm[j].getX() - 64;
-				b = wurm[j].getY() - 64;
-
-				c = spice[i].getX();
-				d = spice[i].getY();
-
-				if (c < a + 100 && c + 32 > a &&
-					d < b + 100 && d + 32 > b) {
-
-					spice[i].setPos(Hilfe.zufall(170, 700), Hilfe.zufall(85, 490));
-
-					j = -1;
-				}
-			}
-
-			spice[i].malen();
-		}
-
-		crawler.malen();
 	}
 
+
+public void SpielfeldMalen() {
+
+    int a, b, c, d, e, f;
+    e = ui.getWurmcount();
+    f = ui.getSpicecount();
+
+    crawler = new Crawler();
+    wurm = new Wurm[e];
+    spice = new Spice[f];
+
+    gegenstaende = new object[e + f];
+    String objects = "Wurm"+ e +" Spice"+ f;
+  System.out.println(objects);
+
+    for (int i = 0; i < e; i++) {
+
+        wurm[i] = new Wurm();
+        gegenstaende[i] = wurm[i];
+
+        wurm[i].setPos(Hilfe.zufall(234, 631), Hilfe.zufall(149, 386));
+
+        for (int j = 0; j < i; j++) {
+
+            a = wurm[j].getX();
+            b = wurm[j].getY();
+
+            c = wurm[i].getX();
+            d = wurm[i].getY();
+
+            if (a - c >= -128 && a - c <= 128 && b - d >= -128 && b - d <= 128) {
+
+                wurm[i].setPos(Hilfe.zufall(234, 631), Hilfe.zufall(149, 386));
+
+                j = -1;
+            }
+        }
+    }
+
+    for (int i = 0; i < f; i++) {
+
+        spice[i] = new Spice();
+        gegenstaende[e + i] = spice[i];
+
+        spice[i].setPos(Hilfe.zufall(170, 700), Hilfe.zufall(85, 490));
+
+        for (int j = 0; j < i; j++) {
+
+            a = spice[j].getX();
+            b = spice[j].getY();
+
+            c = spice[i].getX();
+            d = spice[i].getY();
+
+            if (a - c >= -60 && a - c <= 60 && b - d >= -60 && b - d <= 60) {
+
+                spice[i].setPos(Hilfe.zufall(170, 700), Hilfe.zufall(85, 490));
+
+                j = -1;
+            }
+        }
+
+        for (int j = 0; j < e; j++) {
+
+            a = wurm[j].getX() - 64;
+            b = wurm[j].getY() - 64;
+
+            c = spice[i].getX();
+            d = spice[i].getY();
+
+            if (c < a + 100 && c + 32 > a && d < b + 100 && d + 32 > b) {
+
+                spice[i].setPos(Hilfe.zufall(170, 700), Hilfe.zufall(85, 490));
+
+                j = -1;
+            }
+        }
+    }
+
+    // Polymorphie damit Sie etwas drin haben, bin zu faul alles auszutauschen.
+    for (int i = 0; i < gegenstaende.length; i++) {
+        gegenstaende[i].malen();
+    }
+
+    crawler.malen();
+}
+
+
 	private boolean was_pressed = false;
+
 	public void loop() {
 
 		while (!ende.wurdeGedrueckt()) {
 
 			Hilfe.warte(1);
-			
+
 			boolean pressed = maus.istGedrueckt();
-			
+
 			if (pressed && !was_pressed) {
 
 				for (int i = 0; i < 10; i++) {
@@ -136,18 +154,16 @@ public class Panel {
 
 				for (int i = 0; i < 4; i++) {
 					ClickeWurm(i);
-					if (wurm[i].getAngeklickt()==true && wurm[i].getfertig()!= true) {
-						
+
+					if (wurm[i].getAngeklickt() == true && wurm[i].getfertig() != true) {
+
 						wurm[i].setfertig(true);
-						 System.out.println("wurm");
-						 riesenwurm.setMeter(riesenwurm.getMeter()+12500);
-						
+						System.out.println("wurm");
+						riesenwurm.setMeter(riesenwurm.getMeter() + 17500);
 					}
-					
-					
 				}
 			}
-			
+
 			was_pressed = pressed;
 
 			if (tastatur.wurdeGedrueckt()) {
@@ -170,20 +186,20 @@ public class Panel {
 					crawler.bewege("Rechts");
 				}
 			}
-			
-			if (riesenwurm.getMeter()<=200000) {
-				
-				riesenwurm.setMeter(riesenwurm.getMeter()+1);
+
+			if (riesenwurm.getMeter() <= 100000) {
+
+				riesenwurm.setMeter(riesenwurm.getMeter() + 1);
 
 				ui.showMeter();
-			}else {
-				riesenwurm.ende((crawler.getX()-64), (crawler.getY()-64));
+			} else {
+				riesenwurm.ende((crawler.getX() - 64), (crawler.getY() - 64));
 			}
 
 			if (ende.wurdeGedrueckt()) {
-				
-				riesenwurm.ende((crawler.getX()-64), (crawler.getY()-64));
-				
+
+				riesenwurm.ende((crawler.getX() - 64), (crawler.getY() - 64));
+
 				Hilfe.warte(1000);
 				fenster.gibFrei();
 				fenster.setzeSichtbar(false);
@@ -206,8 +222,4 @@ public class Panel {
 		wurm[i].checkClick(crawler.getX(), crawler.getY() + 48);
 		wurm[i].checkClick(crawler.getX() + 57, crawler.getY() + 48);
 	}
-
-	
-	
-	
 }

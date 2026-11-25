@@ -25,8 +25,8 @@ public abstract class object {
 			
 		}
 			public abstract void checkClick(int mx, int my);
-				
-				
+			
+			public abstract void malen();
 			
 		
 		

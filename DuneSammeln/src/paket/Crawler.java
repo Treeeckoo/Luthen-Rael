@@ -54,9 +54,9 @@ public class Crawler {
 		if (y>85 && 510 >= y) {
 	    if ("Oben".equals(s)) {
 	    	rover.oben();
-	    	Hilfe.warte(10);
+	    	Hilfe.warte(1);
 	    	radieren();
-	    	for(int i =1;i<3;i++) {
+	    	for(int i =1;i<2;i++) {
 	        	a = i;
 	        }
 	        y = y - a;
@@ -68,9 +68,9 @@ public class Crawler {
 		if (x>=145 && 695 >= x) {
 	    if ("Rechts".equals(s)) {
 	    	rover.rechts();
-	    	Hilfe.warte(10);
+	    	Hilfe.warte(1);
 	        radieren();
-	        for(int i =1;i<3;i++) {
+	        for(int i =1;i<2;i++) {
 	        	a =i;
 	        }
 	        x = x + a;
@@ -80,9 +80,9 @@ public class Crawler {
 	        if (y>= 50 && 450 >= y) {
 	    if ("Unten".equals(s)) {
 	    	rover.unten();
-	    	Hilfe.warte(10);
+	    	Hilfe.warte(1);
 	        radieren();
-	        for(int i =1;i<3;i++) {
+	        for(int i =1;i<2;i++) {
 	        	a =i;
 	        }
 	        y = y + a;
@@ -93,9 +93,9 @@ public class Crawler {
 	        if (x>=160 && 700 >= x) {
 	    if ("Links".equals(s)) {
 	    	rover.links();
-	    	Hilfe.warte(10);
+	    	Hilfe.warte(1);
 	        radieren();
-	        for(int i =1;i<3;i++) {
+	        for(int i =1;i<2;i++) {
 	        	a =i;
 	        }
 	        x = x - a;

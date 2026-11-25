@@ -33,5 +33,10 @@ public class RiesenWurm extends object {
 	public int getMeter() {
 		return meter;
 	}
+	@Override
+	public void malen() {
+		// TODO Auto-generated method stub
+		
+	}
 	
 }
