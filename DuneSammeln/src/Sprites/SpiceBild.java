@@ -28,5 +28,8 @@ private Bild spice;
 		spice.setzeSichtbar(b);
 		
 	}
+	public void setSize(int a, int b) {
+		spice.setzeGroesse(a, b);
+	}
 
 }

@@ -39,7 +39,7 @@ public class RoverBild extends MainBild{
 	@Override
 	public void ladeMap() {
 		map = new Bild("/Sprittes/map.png");
-		map.setzePosition(150, 80);
+		map.setzePosition(145, 80);
 		map.setzeZOrdnung(2);
 	}
 	
@@ -70,7 +70,10 @@ public class RoverBild extends MainBild{
 
 	@Override
 	public void setSichtbar(boolean b) {
-		// TODO Auto-generated method stub
+		Rover.setzeSichtbar(b);
+		RoverLeft.setzeSichtbar(b);
+		RoverRight.setzeSichtbar(b);
+		RoverUp.setzeSichtbar(b);
 		
 	}
 }

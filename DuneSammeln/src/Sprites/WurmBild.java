@@ -36,6 +36,7 @@ private Bild worm;
 	public void setSize(int a, int b) {
 		worm.setzeGroesse(a, b);
 	}
+	
 
 }
 
